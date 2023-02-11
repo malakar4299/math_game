@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintLeft_toLeftOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_top"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            card_view:cardElevation="10dp"
+            card_view:cardCornerRadius="20dp"
+            android:layout_margin="10dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardMaxElevation="12dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/cardholder">
+
+            <EditText
+                android:id="@+id/first_num"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:autofillHints="false"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="100sp"
+                android:paddingLeft="100dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/card_view_top" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            card_view:cardElevation="10dp"
+            card_view:cardCornerRadius="20dp"
+            android:layout_margin="10dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardMaxElevation="12dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/divider">
+
+            <EditText
+                android:id="@+id/op_num"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:autofillHints="false"
+                android:background="@android:color/transparent"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="100sp"
+                android:paddingRight="100dp"/>
+
+            <EditText
+                android:id="@+id/second_num"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:autofillHints="false"
+                android:background="@android:color/transparent"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="100sp"
+                android:paddingLeft="100dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inforgraph"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintLeft_toLeftOf="parent">
+
+        <Button
+            android:id="@+id/generateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generate 10 Random Problems"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="525dp"
+            card_view:layout_constraintTop_toTopOf="@id/inforgraph"
+            card_view:layout_constraintLeft_toLeftOf="@id/inforgraph"
+            card_view:layout_constraintRight_toRightOf="@id/inforgraph"
+            android:layout_margin="10dp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/RGroup"
+            card_view:layout_constraintTop_toBottomOf="@id/generateButton"
+            card_view:layout_constraintLeft_toLeftOf="@id/inforgraph"
+            card_view:layout_constraintRight_toRightOf="@id/inforgraph"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Addition Problems"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="70dp"
+            card_view:layout_constraintTop_toBottomOf="@id/RGroup"
+            card_view:layout_constraintLeft_toLeftOf="@id/RGroup"
+            android:layout_marginLeft="30dp"
+            />
+
+            <RadioButton
+                android:id="@+id/subButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subtraction Problems"
+                card_view:layout_constraintLeft_toRightOf="@id/addButton"
+                card_view:layout_constraintTop_toBottomOf="@id/RGroup"
+                tools:layout_editor_absoluteX="250dp"
+                tools:layout_editor_absoluteY="70dp"
+                android:layout_marginLeft="20dp"/>
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="124dp"
+            tools:layout_editor_absoluteY="118dp"
+            card_view:layout_constraintLeft_toLeftOf="@id/inforgraph"
+            card_view:layout_constraintTop_toBottomOf="@id/RGroup"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:hint="Answer"/>
+
+        <Button
+            android:id="@+id/submitAnswerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            tools:layout_editor_absoluteX="315dp"
+            tools:layout_editor_absoluteY="115dp"
+            card_view:layout_constraintLeft_toRightOf="@id/editTextNumber"
+            card_view:layout_constraintTop_toBottomOf="@id/RGroup"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: 0"
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="178dp"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintRight_toRightOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/editTextNumber"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
