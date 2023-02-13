@@ -1,11 +1,9 @@
 package com.example.flashcards
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.get
+import androidx.appcompat.app.AppCompatActivity
 import com.example.flashcards.data.model.FlashCardsModel
 import com.example.flashcards.databinding.ActivityFlashCardBinding
 import com.google.android.material.snackbar.Snackbar
@@ -55,18 +53,34 @@ class FlashCardActivity : AppCompatActivity() {
         }
 
         binding.submitAnswerButton.setOnClickListener {
-            if(checkAnswer())
-            {
-                nextQuestion(true)
+            if(binding.editTextNumber.text.isNotBlank() && isNumeric(binding.editTextNumber.text.toString())) {
+                if (checkAnswer()) {
+                    nextQuestion(true)
+                } else {
+                    nextQuestion(false)
+                }
+                binding.editTextNumber.setText("")
             }else{
-                nextQuestion(false)
+                Snackbar.make(binding.root, "Please enter proper value", Snackbar.LENGTH_LONG).show()
             }
-            binding.editTextNumber.setText("")
         }
 
             Log.i("Flash card model", binding.RGroup.checkedRadioButtonId.toString())
 
         }
+
+
+    fun isNumeric(strNum: String?): Boolean {
+        if (strNum == null) {
+            return false
+        }
+        try {
+            val d = strNum.toDouble()
+        } catch (nfe: NumberFormatException) {
+            return false
+        }
+        return true
+    }
 
     fun startGame(operation: String){
         binding.submitAnswerButton.setEnabled(true)
@@ -75,8 +89,8 @@ class FlashCardActivity : AppCompatActivity() {
         binding.scoreText.setText("Score: " + flashCardsModel.score)
         flashCardsModel.chooseOperation(operation)
         binding.generateButton.setText("Restart Game")
-        var firstNumber = Math.floor(Math.random() * (99) + 1).toInt()
-        var secondNumber = Math.floor(Math.random() * (19) + 1).toInt()
+        var firstNumber = Math.floor((Math.random() * (99)) + 1).toInt()
+        var secondNumber = Math.floor((Math.random() * (19)) + 1).toInt()
         flashCardsModel.setNumbers(firstNumber.toString(), secondNumber.toString())
         binding.firstNum.setText(flashCardsModel.firstNum)
         binding.secondNum.setText(flashCardsModel.secondNum)
